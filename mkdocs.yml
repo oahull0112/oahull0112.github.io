@@ -3,3 +3,10 @@ site_url: https://oahull0112.github.io
 nav:
     - Home: index.md
     - Article: article.md
+theme:
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - toc.follow
