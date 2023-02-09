@@ -1,0 +1,5 @@
+site_name: My Docs
+site_url: https://oahull0112.github.io
+nav:
+    - Home: index.md
+    - Article: article.md
