@@ -2,8 +2,7 @@
 
 <h2>A Second Level Header</h2>
 
-<p>Now is the time for all good men to come to
-the aid of their country. This is just a
+<p>This is just a
 regular paragraph.</p>
 
 <p>The quick brown fox jumped over the lazy

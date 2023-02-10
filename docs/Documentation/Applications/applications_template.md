@@ -21,7 +21,7 @@ module load program/2.0.0
 
 If applicable, include a section on how to build the code from source.
 
-### Sample building section
+### Building From Source
 
 Here, give detailed and step-by-step instructions on how to build the code, if this step is necessary. 
 
