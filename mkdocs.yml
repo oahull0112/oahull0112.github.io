@@ -1,6 +1,7 @@
 site_name: OAH
 nav:
   - Home: index.md
+  - How-To: howto.md
   - Documentation:
       - Applications:
         - Applications: Documentation/Applications/applications.md
