@@ -2,7 +2,7 @@
 
 [BerkeleyGW](https://www.berkeleygw.org) is a massively parallel many-body perturbation theory code capable of performing RPA, GW, and BGW-BSE calculations, which can be used to investigate properties of materials with high accuracy.
 
-## Getting Started ("Quick start guide?")
+## Getting Started
 
 This section provides the minimum amount of information needed to run a BerkeleyGW job on an NREL cluster.
 
@@ -11,6 +11,8 @@ BerkeleyGW must be built from source to run on NREL systems.
 ## Building Instructions
 
 Include step-by-step instructions that the user can paste into their terminally
+
+First, [download BerkeleyGW](https://berkeleygw.org/download/) 
 
 ??? example "Building on Kestrel"
 
@@ -73,7 +75,7 @@ Include step-by-step instructions that the user can paste into their terminally
 
 	Choose whether to use the real or complex flavor of BerkeleyGW by copying the corresponding file to flavor.mk. For example, for the complex version:
 
-	`cp flavor_cplx.mk flavor.m`k
+	`cp flavor_cplx.mk flavor.mk`
 
 	!!! note
 		If you are unsure which to use, select the complex flavor.
@@ -126,3 +128,10 @@ Include step-by-step instructions that the user can paste into their terminally
 
 	Put job example here
 
+## Troubleshooting
+
+Include known problems and workarounds here, if applicable
+
+## Documentation
+
+Documentation for the BerkeleyGW program can be found [here](https://berkeleygw.org/documentation/)

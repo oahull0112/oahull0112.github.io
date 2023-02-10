@@ -7,6 +7,7 @@ nav:
         - Documentation/Applications/applications.md
         - BerkeleyGW Module Example: Documentation/Applications/berkeleygw_module.md
         - BerkeleyGW Build Example: Documentation/Applications/berkeleygw_build.md
+        - Application Template Example: Documentation/Applications/applications_template.md
 
 theme:
   name: material

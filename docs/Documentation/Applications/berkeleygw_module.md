@@ -91,3 +91,8 @@ Next, create a job script. Below are example job scripts for the available NREL 
 ## Troubleshooting
 
 Include known problems and workarounds here, if applicable
+
+## Documentation
+
+Documentation for the BerkeleyGW program can be found [here](https://berkeleygw.org/documentation/)
+
