@@ -1,12 +1,21 @@
 site_name: OAH
 nav:
   - Home: index.md
-  - Getting Started: howto.md
-  - Applications:
-      - applications/applications.md
-      - BerkeleyGW: applications/berkeleygw.md
+  - Documentation:
+      - Applications:
+        - Applications: Documentation/Applications/applications.md
+        - BerkeleyGW:
+          - Documentation/Applications/berkeleygw.md
+
 theme:
   name: material
+  custom_dir: overrides
   features:
+    - navigation.tabs
     - navigation.indexes
-    - navigation.path
+
+markdown_extensions:
+  - attr_list
+  - meta
+  - pymdownx.highlight
+  - pymdownx.superfences

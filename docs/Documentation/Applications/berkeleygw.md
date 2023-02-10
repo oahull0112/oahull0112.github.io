@@ -1,4 +1,4 @@
-<h1>BerkeleyGWe</h1>
+<h1>BerkeleyGW</h1>
 
 <h2>A Second Level Header</h2>
 
