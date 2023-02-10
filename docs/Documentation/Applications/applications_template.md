@@ -97,7 +97,7 @@ Include a section on how to run the job, e.g. with job script examples or comman
 	export OMP_NUM_THREADS=
 
 	# include a sample srun command or similar
-	srun epsilon.cplx.x
+	srun program.x
 
 	```
 
@@ -109,7 +109,7 @@ Include a section on how to run the job, e.g. with job script examples or comman
 
 ??? example "Swift"
 
-	If the submit script for Swiftn differs from Kestrel, then include a Swift  example script here.
+	If the submit script for Swift differs from Kestrel, then include a Swift  example script here.
 	If the submit script does not differ, then remove this section (starting from the `??? example "Swift"` line)
 
 
