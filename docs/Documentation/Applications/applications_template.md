@@ -27,7 +27,7 @@ Here, give detailed and step-by-step instructions on how to build the code, if t
 
 If building from source is not necessary for the user (e.g. because it already exists as a module), but might be something that power users would want to do, then move this entire section to below the `### Documentation` section.
 
-If building from source is not something any user would reasonably have an interest in, then delete this section all together.
+If building from source is unlikely to be something users have  an interest in, then delete this section entirely.
 
 If building from source is necessary, include detailed instructions for how to do it on each HPC system:
 
@@ -103,20 +103,15 @@ Include a section on how to run the job, e.g. with job script examples or comman
 
 ??? example "Vermillion"
 
-	```slurm
-
 	If the submit script for Vermillion differs from Kestrel, then include a Vermillion example script here.
 	If the submit script does not differ, then remove this section (starting from the `??? example "Vermillion"` line)
 
-	```
 
 ??? example "Swift"
-	```slurm
 
 	If the submit script for Swiftn differs from Kestrel, then include a Swift  example script here.
 	If the submit script does not differ, then remove this section (starting from the `??? example "Swift"` line)
 
-	```
 
 ??? example "Template"
 	
@@ -129,6 +124,9 @@ Include a section on how to run the job, e.g. with job script examples or comman
 	And unblocked sections.
 !!! note
 	You can use a note to draw attention to the information in this section
+
+!!! note
+	If the submit scripts for Vermillion, Swift, and Kestrel are all the same, remove all of the submit script collapsible sections (remove the `??? example` headers that are inside the `### Example Job Scripts` header), and give a submit script directly below the `### Example Job Scripts` header.
 
 
 ## Troubleshooting
