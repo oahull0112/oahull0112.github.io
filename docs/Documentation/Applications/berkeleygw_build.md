@@ -14,20 +14,6 @@ Include step-by-step instructions that the user can paste into their terminally
 
 ??? example "Building on Kestrel"
 
-information on how to build on Kestrel
-
-??? example "Building on Vermillion"
-
-information on how to build on Vermillion
-
-??? example "Building on Swift"
-
-information on how to build on Swift
-
-## Sample Job Scripts
-
-??? example "Kestrel CPU"
-
 	The following `arch.mk` file was used to build BerkeleyGW-3.0 on Kestrel on (date).
         Copy this arch.mk file into your BerkeleyGW directory.
 	
@@ -97,14 +83,46 @@ information on how to build on Swift
 	make cleanall
 	make all
 	```
-	
 
+
+??? example "Building on Vermillion"
+
+	information on how to build on Vermillion
+
+??? example "Building on Swift"
+
+	information on how to build on Swift
+
+## Sample Job Scripts
+
+??? example "Kestrel CPU"
+
+	```slurm
+	#!/bin/bash
+
+	# summarize number of nodes, number of tasks per node, and number of threads per task in this comment 
+
+	#SBATCH --time=01:00:00
+	#SBATCH --nodes=2
+	#SBATCH --ntasks-per-node=18
+	#SBATCH --cpus-per-task=2
+	#SBATCH --partition=standard
+	#SBATCH --account=Account to charge job to 
+
+	export OMP_NUM_THREADS=2
+
+	srun epsilon.cplx.x
+	```
+		
+??? example "Kestrel GPU"
+
+	Put job example here
 
 ??? example "Vermillion"
 
-Instructions for building on Vermillion
+	Put job example here
 
 ??? example "Swift"
 
-Instructions for building on Swift
+	Put job example here
 

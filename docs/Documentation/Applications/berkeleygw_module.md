@@ -2,7 +2,7 @@
 
 [BerkeleyGW](https://www.berkeleygw.org) is a massively parallel many-body perturbation theory code capable of performing RPA, GW, and BGW-BSE calculations, which can be used to investigate properties of materials with high accuracy.
 
-## Getting Started ("Quick start guide?")
+## Getting Started
 
 This section provides the minimum amount of information needed to run a BerkeleyGW job on an NREL cluster.
 
@@ -28,22 +28,21 @@ Next, create a job script. Below are example job scripts for the available NREL 
 
 	#SBATCH --time=01:00:00
 	#SBATCH --nodes=2
-	#SBATCH --ntasks-per-node=52
+	#SBATCH --ntasks-per-node=18
 	#SBATCH --cpus-per-task=2
 	#SBATCH --partition=standard
-        #SBATCH --account=[Account to charge job to] (or put "standby?")
+	#SBATCH --account=Account to charge job to 
 
 	export OMP_NUM_THREADS=2
 
-	srun -N 2 -n 104 epsilon.cplx.x
+	srun epsilon.cplx.x
 	```
 ??? example "Kestrel GPU"
-        ``slurm
+        ```slurm
         #!/bin/bash
 
 	# summarize number of nodes, number of tasks per node, and number of threads per task in this comment 
 
-	#SBATCH -q regular
 	#SBATCH -p gpu
 	#SBATCH -t 01:00:00
 	#SBATCH -n 8
@@ -58,6 +57,7 @@ Next, create a job script. Below are example job scripts for the available NREL 
 
         # put srun command here, e.g.:
 	srun epsilon.cplx.x
+	```
 
 ??? example "Vermillion"
 
@@ -66,12 +66,14 @@ Next, create a job script. Below are example job scripts for the available NREL 
 
 	# summarize number of nodes, number of tasks per node, and number of threads per task in this comment 
 
-	#SBATCH --qos=regular
 	#SBATCH --time=01:00:00
 	#SBATCH --nodes=2
-	#SBATCH --ntasks=32
-	#SBATCH --constraint=knl,quad,cache
-	#SBATCH --core-spec=4
+	#SBATCH --ntasks-per-node=18
+	#SBATCH --cpus-per-task=2
+	#SBATCH --partition=standard
+	#SBATCH --account=Account to charge job to 
+
+	export OMP_NUM_THREADS=2
 
 	# put module loads here
 
@@ -89,12 +91,12 @@ Next, create a job script. Below are example job scripts for the available NREL 
 
 	# summarize number of nodes, number of tasks per node, and number of threads per task in this comment 
 
-	#SBATCH --qos=regular
 	#SBATCH --time=01:00:00
 	#SBATCH --nodes=2
-	#SBATCH --ntasks=32
-	#SBATCH --constraint=knl,quad,cache
-	#SBATCH --core-spec=4
+	#SBATCH --ntasks-per-node=18
+	#SBATCH --cpus-per-task=2
+	#SBATCH --partition=standard
+	#SBATCH --account=Account to charge job to 
 
 	# put module loads here
 
