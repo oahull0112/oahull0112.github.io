@@ -2,8 +2,11 @@ site_name: OAH
 nav:
   - Home: index.md
   - Getting Started: howto.md
-  - Applications: applications.md
+  - Applications:
+      - Applications/applications.md
+      - BerkeleyGW: Applications/berkeleygw.md
 theme:
   name: material
   features:
+    - navigation.indexes
     - navigation.path
