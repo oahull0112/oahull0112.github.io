@@ -1,7 +1,7 @@
 site_name: My Docs
 nav:
     - Home: index.md
-    - How-to: howto.md
+    - Set up: howto.md
       #    - Applications: 
       #      - Applications/applications.md
       #      - BerkeleyGW: Applications/BerkeleyGW/berkeleygw.md 
