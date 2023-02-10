@@ -1,7 +1,10 @@
 site_name: My Docs
 nav:
     - Home: index.md
-    - Article: howto.md
+    - How-to: howto.md
+    - Applications: 
+      - Applications/applications.md
+      - BerkeleyGW: Applications/BerkeleyGW/berkeleygw.md 
 theme:
   name: material
   features:
