@@ -5,8 +5,7 @@ nav:
   - Documentation:
       - Applications:
         - Documentation/Applications/applications.md
-        - BerkeleyGW:
-          - Documentation/Applications/berkeleygw.md
+        - BerkeleyGW: Documentation/Applications/berkeleygw.md
 
 theme:
   name: material
