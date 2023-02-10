@@ -1,4 +1,7 @@
 site_name: My Docs
+nav:
+    - Home: index.md
+    - How-To: How-To.md
 theme:
   name: material
   features:
