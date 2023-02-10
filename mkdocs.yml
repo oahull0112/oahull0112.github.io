@@ -2,8 +2,8 @@ site_name: OAH
 nav:
   - Home: index.md
   - Getting Started: howto.md
+  - Applications: Applications/applications.md
 theme:
   name: material
   features:
-    - navigation.tabs
-    - navigation.tabs.sticky
+    - navigation.path
