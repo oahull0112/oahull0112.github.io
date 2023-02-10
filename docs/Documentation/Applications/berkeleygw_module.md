@@ -37,7 +37,9 @@ Next, create a job script. Below are example job scripts for the available NREL 
 
 	srun epsilon.cplx.x
 	```
+
 ??? example "Kestrel GPU"
+
         ```slurm
         #!/bin/bash
 

@@ -15,6 +15,9 @@ theme:
     - navigation.indexes
     - navigation.path
     - toc.follow
+  icon:
+    admonition:
+      example: material/arrow-top-left-bottom-right
 
 markdown_extensions:
   - attr_list
