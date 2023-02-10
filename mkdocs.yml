@@ -3,8 +3,8 @@ nav:
   - Home: index.md
   - Getting Started: howto.md
   - Applications:
-    - applications/applications.md
-    - BerkeleyGW: applications/berkeleygw.md
+      - applications/applications.md
+      - BerkeleyGW: applications/berkeleygw.md
 theme:
   name: material
   features:
