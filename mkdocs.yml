@@ -2,7 +2,7 @@ site_name: OAH
 nav:
   - Home: index.md
       - How to: howto.md
-      - Applications: Applications/applications.md 
+      - Applications:
           - BerkeleyGW: Applications/BerkeleyGW/berkeleygw.md 
         #  - Tutorials:
         #      - tutorials/index.md
