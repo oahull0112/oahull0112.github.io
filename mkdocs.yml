@@ -1,10 +1,27 @@
 site_name: My Docs
 nav:
-    - Home: index.md
-    - Set up: howto.md
-      #    - Applications: 
-      #      - Applications/applications.md
-      #      - BerkeleyGW: Applications/BerkeleyGW/berkeleygw.md 
+  - Home: index.md
+  - How to: howto.md
+  - Applications: 
+      - Applications/applications.md
+      - BerkeleyGW: Applications/BerkeleyGW/berkeleygw.md 
+        #  - Tutorials:
+        #      - tutorials/index.md
+        #      - Playbooks:
+        #        - tutorials/playbooks/index.md
+        #        - Compiling a code: tutorials/playbooks/compiling.md
+        #  - Accounts:
+        #      - accounts/index.md
+        #      - Passwords: accounts/passwords.md
+        #      - Policy: accounts/policy.md
+        #      - Collaboration Accounts: accounts/collaboration_accounts.md
+        #  - Iris:
+        #      - iris/index.md
+        #      - Users: iris/iris-for-users.md
+        #      - PIs and Project Managers: iris/iris-for-pis.md
+        #      - ERCAP and Iris Guide for Allocation Managers: iris/iris-for-allocation-managers.md
+        #      - Publications Tracking in Iris: iris/iris-publications.md
+
 theme:
   name: material
   features:
