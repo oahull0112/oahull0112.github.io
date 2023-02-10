@@ -36,25 +36,7 @@ Next, create a job script. Below are example job scripts for the available NREL 
 	export OMP_NUM_THREADS=2
 
 	srun epsilon.cplx.x
-	```
 
-??? example "Kestrel GPU"
-
-	```slurm
-	#!/bin/bash
-
-	# summarize number of nodes, number of tasks per node, and number of threads per task in this comment 
-
-	#SBATCH --time=01:00:00
-	#SBATCH --nodes=2
-	#SBATCH --ntasks-per-node=18
-	#SBATCH --cpus-per-task=2
-	#SBATCH --partition=standard
-	#SBATCH --account=Account to charge job to 
-
-	export OMP_NUM_THREADS=2
-
-	srun epsilon.cplx.x
 	```
 
 ??? example "Vermillion"

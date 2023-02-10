@@ -73,9 +73,9 @@ Include step-by-step instructions that the user can paste into their terminally
 
 	Choose whether to use the real or complex flavor of BerkeleyGW by copying the corresponding file to flavor.mk. For example, for the complex version:
 
-	`cp flavor_cplx.mk flavor.mk
+	`cp flavor_cplx.mk flavor.m`k
 
-	!!! Tip:
+	!!! note
 		If you are unsure which to use, select the complex flavor.
 
 	Finally, compile the code. To view the available make targets, type `make`. To compile all BerkeleyGW executables, type:
