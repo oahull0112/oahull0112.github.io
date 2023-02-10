@@ -8,7 +8,7 @@ This section provides the minimum amount of information needed to run a Berkeley
 
 BerkeleyGW must be built from source to run on NREL systems.
 
-## Building Instructions
+### Building Instructions
 
 Include step-by-step instructions that the user can paste into their terminally
 
@@ -95,7 +95,7 @@ First, [download BerkeleyGW](https://berkeleygw.org/download/)
 
 	information on how to build on Swift
 
-## Sample Job Scripts
+### Sample Job Scripts
 
 ??? example "Kestrel CPU"
 
