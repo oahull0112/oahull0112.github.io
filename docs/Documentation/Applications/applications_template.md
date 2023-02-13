@@ -1,7 +1,7 @@
 # Template for an Application Page
 
 Write a brief description of the program here.
-Include a link to the program's website homepage, e.g. [NREL](https://www.nrel.gov/).
+Include a link to the program's website homepage.
 
 ## Getting Started
 
