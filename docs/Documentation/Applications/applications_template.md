@@ -20,7 +20,8 @@ module load program/2.0.0
 ```
 
 
-!!! note You can use this section to draw attention to important information.
+!!! note 
+	You can use this section to draw attention to important information.
 
 Include a section on how to run the job, e.g. with job script examples or commands for an interactive session.
 
