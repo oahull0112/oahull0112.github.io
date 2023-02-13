@@ -86,6 +86,8 @@ Next, create a job script. Below are example job scripts for the available NREL 
 	srun epsilon.cplx.x
 
 	```
+	
+Submit the job with `sbatch submit_script_filename`
 
 
 ## Troubleshooting
