@@ -19,56 +19,9 @@ module avail program
 module load program/2.0.0
 ```
 
-If applicable, include a section on how to build the code from source.
 
-### Building From Source
-
-Here, give detailed and step-by-step instructions on how to build the code, if this step is necessary. 
-
-If building from source is not necessary for the user (e.g. because it already exists as a module), but might be something that power users would want to do, then move this entire section to below the `### Documentation` section.
-
-If building from source is unlikely to be something users have  an interest in, then delete this section entirely.
-
-If building from source is necessary, include detailed instructions for how to do it on each HPC system:
-
-??? example "Building on Kestrel"
-
-	Be explicit in your instructions. A user reading this section should be able to follow along and have a functioning, compiled program by the end.
-	
-	```
-	Include relevant commands in blocks.
-	```
-	or as in-line `blocks`
-
-	Be sure to state how to set-up the necessary environment, e.g.:
-
-	```
-	module load gcc/8.4.0
-	module load openmpi/3.1.6/gcc-8.4.0
-	module load hdf5/1.10.6/gcc-ompi
-	```
-
-
-	!!! note
-		You can use this section to draw attention to important information.
-
-	Give instructions on compile commands. E.g., to view the available make targets, type `make`. To compile all program executables, type:
-
-	```
-	make cleanall
-	make all
-	```
-
-
-??? example "Building on Vermillion"
-
-	information on how to build on Vermillion
-
-??? example "Building on Swift"
-
-	information on how to build on Swift
-
-
+!!! note
+You can use this section to draw attention to important information.
 
 Include a section on how to run the job, e.g. with job script examples or commands for an interactive session.
 
