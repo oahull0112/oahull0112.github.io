@@ -1,12 +1,13 @@
 # Template for an Application Page
 
+**Documentation** [ link to documentation](https://nrel.gov)
+
 Write a brief description of the program here.
-Include a link to the program's website homepage, e.g. [NREL](https://www.nrel.gov/).
 
 ## Getting Started
 
 This section provides the minimum amount of information necessary to successfully run a basic job on an NREL Cluster.
-This information should be complete and self-contained. If possible, try to avoid writing this section in such a way that the user must reference additional documentation pages.
+This information should be as complete and self-contained as possible.
 
 Instructions should be step-by-step and include copy-and-pastable commands where applicable.
 
@@ -15,63 +16,14 @@ For example, describe how the user can load the program module  with `module ava
 ```
 module avail program
    program/2.0.0    program/1.0.0
+```
 
+```
 module load program/2.0.0
 ```
 
-If applicable, include a section on how to build the code from source.
-
-### Building From Source
-
-Here, give detailed and step-by-step instructions on how to build the code, if this step is necessary. 
-
-If building from source is not necessary for the user (e.g. because it already exists as a module), but might be something that power users would want to do, then move this entire section to below the `### Documentation` section.
-
-If building from source is unlikely to be something users have  an interest in, then delete this section entirely.
-
-If building from source is necessary, include detailed instructions for how to do it on each HPC system:
-
-??? example "Building on Kestrel"
-
-	Be explicit in your instructions. A user reading this section should be able to follow along and have a functioning, compiled program by the end.
-	
-	```
-	Include relevant commands in blocks.
-	```
-	or as in-line `blocks`
-
-	Be sure to state how to set-up the necessary environment, e.g.:
-
-	```
-	module load gcc/8.4.0
-	module load openmpi/3.1.6/gcc-8.4.0
-	module load hdf5/1.10.6/gcc-ompi
-	```
-
-
-	!!! note
-		You can use this section to draw attention to important information.
-
-	Give instructions on compile commands. E.g., to view the available make targets, type `make`. To compile all program executables, type:
-
-	```
-	make cleanall
-	make all
-	```
-
-
-??? example "Building on Vermillion"
-
-	information on how to build on Vermillion
-
-??? example "Building on Swift"
-
-	information on how to build on Swift
-
-
 
 Include a section on how to run the job, e.g. with job script examples or commands for an interactive session.
-
 
 ### Example Job Scripts
 
@@ -122,18 +74,20 @@ Include a section on how to run the job, e.g. with job script examples or comman
 	```
 
 	And unblocked sections.
+
 !!! note
 	You can use a note to draw attention to the information in this section
 
 !!! note
 	If the submit scripts for Vermillion, Swift, and Kestrel are all the same, remove all of the submit script collapsible sections (remove the `??? example` headers that are inside the `### Example Job Scripts` header), and give a submit script directly below the `### Example Job Scripts` header.
 
+Include instructions on how to submit the job script
+
+## Advanced
+
+Include advanced user information about the code here (see BerkeleyGW pages for example)
 
 ## Troubleshooting
 
 Include known problems and workarounds here, if applicable
-
-## Documentation
-
-Documentation for the BerkeleyGW program can be found [here](https://berkeleygw.org/documentation/)
 

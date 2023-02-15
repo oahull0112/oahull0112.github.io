@@ -4,10 +4,10 @@ nav:
   - How-To: howto.md
   - Documentation:
       - Applications:
-        - Documentation/Applications/applications.md
         - BerkeleyGW Module Example: Documentation/Applications/berkeleygw_module.md
         - BerkeleyGW Build Example: Documentation/Applications/berkeleygw_build.md
-        - Application Template Example: Documentation/Applications/applications_template.md
+        - Application Module Template: Documentation/Applications/applications_template_module.md
+        - Application Build Template: Documentation/Applications/applications_template_build.md
 
 theme:
   name: material
