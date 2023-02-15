@@ -180,8 +180,8 @@ Because multiple executables in BerkeleyGW require the WFN input files (WFN and 
 	cd    BGW_EPSILON_$SLURM_JOBID
 	ln -s $BGW/epsilon.cplx.x .
 	ln -s  ../epsilon.inp .
-	ln -sfn  ${WFN_folder}/WFNq.h5      .   
-	ln -sfn  ${WFN_folder}/WFN.h5   ./WFN.h5
+	ln -sf  ${WFN_folder}/WFNq.h5      .   
+	ln -sf  ${WFN_folder}/WFN.h5   ./WFN.h5
 	
 	ulimit -s unlimited
 	export OMP_PROC_BIND=true
