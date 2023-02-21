@@ -1,8 +1,9 @@
 # Template for an Application Page
 
-**Documentation**  [ link to documentation](https://nrel.gov)
+**Documentation:**  [ link to documentation](https://nrel.gov)
 
 Write a brief description of the program here.
+Include a link to the program's website homepage.
 
 ## Getting Started
 
@@ -72,6 +73,8 @@ Include where to download the source code
 	information on how to build on Swift
 
 
+!!! note 
+	You can use this section to draw attention to important information.
 
 Include a section on how to run the job, e.g. with job script examples or commands for an interactive session.
 
@@ -125,11 +128,6 @@ Include a section on how to run the job, e.g. with job script examples or comman
 	```
 
 	And unblocked sections.
-!!! note
-	You can use a note to draw attention to the information in this section
-
-!!! note
-	If the submit scripts for Vermillion, Swift, and Kestrel are all the same, remove all of the submit script collapsible sections (remove the `??? example` headers that are inside the `### Example Job Scripts` header), and give a submit script directly below the `### Example Job Scripts` header.
 
 
 ## Advanced

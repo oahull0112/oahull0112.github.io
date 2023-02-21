@@ -2,7 +2,7 @@
 
 **Documentation:** [BerkeleyGW](https://www.berkeleygw.org)
 
-[BerkeleyGW](https://www.berkeleygw.org) is a massively parallel many-body perturbation theory code capable of performing RPA, GW, and BGW-BSE calculations, which can be used to investigate properties of materials with high accuracy.
+[BerkeleyGW](https://www.berkeleygw.org) is a massively parallel many-body perturbation theory code capable of performing RPA, GW, and GW-BSE calculations, which can be used to investigate properties of materials with high accuracy.
 
 ## Getting Started
 
@@ -119,6 +119,8 @@ Because multiple executables in BerkeleyGW require the WFN input files (WFN and 
 	export OMP_NUM_THREADS=16
 	srun -n 32 -c 32 --cpu-bind=cores ./epsilon.cplx.x
 	```
+	
+Submit the job with `sbatch submit_script_filename`
 
 
 ## Troubleshooting

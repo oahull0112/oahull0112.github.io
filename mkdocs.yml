@@ -4,10 +4,15 @@ nav:
   - How-To: howto.md
   - Documentation:
       - Applications:
+        - Combined Module/Build Template: Documentation/Applications/applications_template.md
+        - BerkeleyGW Combined Module/Build Example: Documentation/Applications/berkeleygw_example.md
         - BerkeleyGW Module Example: Documentation/Applications/berkeleygw_module.md
         - BerkeleyGW Build Example: Documentation/Applications/berkeleygw_build.md
         - Application Module Template: Documentation/Applications/applications_template_module.md
         - Application Build Template: Documentation/Applications/applications_template_build.md
+      - Programming Languages:
+        - Fortran Example: Documentation/ProgrammingLanguages/fortran.md
+        - Template: Documentation/ProgrammingLanguages/template.md
 
 theme:
   name: material

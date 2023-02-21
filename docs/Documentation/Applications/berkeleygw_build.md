@@ -1,8 +1,8 @@
 # BerkeleyGW
 
-**Documentation** [BerkeleyGW](https://berkeleygw.org/documentation/)
+**Documentation:** [BerkeleyGW](https://berkeleygw.org/documentation/)
 
-[BerkeleyGW](https://www.berkeleygw.org) is a massively parallel many-body perturbation theory code capable of performing RPA, GW, and BGW-BSE calculations, which can be used to investigate properties of materials with high accuracy.
+[BerkeleyGW](https://www.berkeleygw.org) is a massively parallel many-body perturbation theory code capable of performing RPA, GW, and GW-BSE calculations, which can be used to investigate properties of materials with high accuracy.
 
 ## Getting Started
 
