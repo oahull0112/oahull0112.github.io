@@ -78,10 +78,13 @@ Include a section on how to run the job, e.g. with job script examples or comman
 !!! note
 	You can use a note to draw attention to the information in this section
 
-!!! note
-	If the submit scripts for Vermillion, Swift, and Kestrel are all the same, remove all of the submit script collapsible sections (remove the `??? example` headers that are inside the `### Example Job Scripts` header), and give a submit script directly below the `### Example Job Scripts` header.
-
 Include instructions on how to submit the job script
+
+## Supported Versions
+
+| Kestrel | Swift | Vermillion |
+|:-------:|:-----:|:----------:|
+| 0.0.0   | 0.0.0 | 0.0.0      |
 
 ## Advanced
 
