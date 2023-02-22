@@ -12,26 +12,11 @@ This information should be as complete and self-contained as possible.
 
 Instructions should be step-by-step and include copy-and-pastable commands where applicable.
 
-For example, describe how the user can load the program module with `module avail` and `module load`:
-
-```
-module avail program
-   program/2.0.0    program/1.0.0
-```
-
-```
-module load program/2.0.0
-```
+This template is for applications that are not supported as modules by NREL, so are only accessible to users by building from source.
 
 ### Building From Source
 
 Here, give detailed and step-by-step instructions on how to build the code, if this step is necessary. 
-
-If building from source is not necessary for the user (e.g. because it already exists as a module), but might be something that power users would want to do, then move this entire section out from under the `Getting Started` section.
-
-If building from source is unlikely to be something users have  an interest in, then use the `application_template_module.md` file as a template instead.
-
-If building from source is necessary, include detailed instructions for how to do it on each applicable HPC system:
 
 Include where to download the source code
 
