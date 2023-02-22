@@ -59,6 +59,12 @@ Save the submit file as bgw.in, and submit with the command
 
 `sbatch bgw.in`
 
+## Supported Versions
+
+| Kestrel    | Swift | Vermillion |
+|:----------:|:-----:|:----------:|
+| 2.0, 3.0   | 0.0.0 | 0.0.0      |
+
 ## Advanced
 
 ### IO Settings
