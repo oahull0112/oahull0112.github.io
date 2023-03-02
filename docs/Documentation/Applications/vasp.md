@@ -1,4 +1,4 @@
-# Template for an Application Page
+# VASP: Vienna Ab initio Simulation Package
 
 **Documentation:** [VASP](https://www.vasp.at/wiki/index.php/The_VASP_Manual)
 
@@ -13,6 +13,7 @@ To determine the electronic ground state, VASP makes use of efficient iterative 
 ### Accessing VASP
 
 The VASP license requires users to be a member of a "workgroup" defined by the University of Vienna or Materials Design. If you are receiving "Permission denied" errors when trying to use VASP, you must be made part of the "vasp" Linux group first. To join, please contact us with the following information: 
+
 * Your name
 * The workgroup PI
 * Whether you are licensed through Vienna (academic) or Materials Design, Inc. (commercial)
@@ -91,20 +92,9 @@ Three distinct executables have been made available:
 	If the submit script does not differ, then remove this section (starting from the `??? example "Swift"` line)
 
 
-??? example "Template"
-	
-	Here's a template of a collapsible example.
+Copy the job script to your working directory (where your INCAR, POSCAR, etc. are located) and submit the job with
 
-	```
-	You can include blocked sections
-	```
-
-	And unblocked sections.
-
-!!! note
-	You can use a note to draw attention to the information in this section
-
-Include instructions on how to submit the job script
+`sbatch job_script_name`
 
 ## Supported Versions
 

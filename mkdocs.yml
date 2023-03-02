@@ -4,6 +4,7 @@ nav:
   - How-To: howto.md
   - Documentation:
       - Applications:
+        - VASP: Documentation/Applications/vasp.md
         - Combined Module/Build Template: Documentation/Applications/applications_template.md
         - BerkeleyGW Combined Module/Build Example: Documentation/Applications/berkeleygw_example.md
         - BerkeleyGW Module Example: Documentation/Applications/berkeleygw_module.md
