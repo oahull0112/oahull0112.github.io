@@ -13,7 +13,6 @@ nav:
         - Application Build Template: Documentation/Applications/applications_template_build.md
       - Programming Languages:
         - Fortran Example: Documentation/ProgrammingLanguages/fortran.md
-        - Template: Documentation/ProgrammingLanguages/template.md
       - Libraries:
         - Libraries Overview: Documentation/Libraries/intro_libraries.md
         - Libraries Deepdive: Documentation/Libraries/deepdive.md
