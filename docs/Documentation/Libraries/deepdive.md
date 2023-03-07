@@ -190,11 +190,13 @@ We see the line for setting the HDF5 root directory environment variable:
 
 Like before, we copy this path into our makefile.include: 
 
+```
 # HDF5-support (optional but strongly recommended) 
 CPP_OPTIONS+= -DVASP_HDF5 
 HDF5_ROOT  ?= /sfs/nopt/nrel/apps/libraries/01-23/spack/opt/spack/linux-rhel8-icelake/intel-2021.6.0/hdf5-1.12.2-dzgeixsm2cd3mupx4ti77ozeh7rh6zdo 
 LLIBS      += -L$(HDF5_ROOT)/lib -lhdf5_fortran 
 INCS       += -I$(HDF5_ROOT)/include 
+```
 
 We’re ready to compile! In the case of VASP, the compile command is `make DEPS=1 std` but in general, the command may be `make all` or similar (consult the documentation of the code you’re trying to build). 
 
