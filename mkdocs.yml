@@ -14,6 +14,9 @@ nav:
       - Programming Languages:
         - Fortran Example: Documentation/ProgrammingLanguages/fortran.md
         - Template: Documentation/ProgrammingLanguages/template.md
+      - Libraries:
+        - Libraries Overview: Documentation/Libraries/intro_libraries.md
+        - Libraries Deepdive: Documentation/Libraries/deepdive.md
 
 theme:
   name: material
