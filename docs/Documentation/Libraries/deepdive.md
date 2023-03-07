@@ -123,7 +123,7 @@ If we type `echo $MKLROOT`, we can confirm that this environment variable is pro
 
 `MKLROOT    ?= /sfs/nopt/nrel/apps/libraries/01-23/spack/opt/spack/linux-rhel8-icelake/intel-2021.6.0/intel-oneapi-mkl-2023.0.0-gnkrgwyxskxitvptyoubqaxlhh2v2re2/mkl/2023.0.0` 
 
-!!! tip “Note” 
+!!! tip  
 	The name of the environment variable for mkl’s root directory set by its module (MKLROOT, set when we `module load intel-oneapi-mkl/2023.0.0-intel`) is not necessarily going to match the corresponding root directory variable in a given makefile. It did in this instance, but that’s not guaranteed. The VASP makefile.include could have just as easily used MKL_ROOT, instead of MKLROOT. This is one reason why it’s safer to use `module show` to find the path of the root directory, then copy this path into the makefile, rather than rely on environment variables.  
 
 To do step 2, we should first look at the contents of $MKLROOT. To show the contents of the mkl directory, type
