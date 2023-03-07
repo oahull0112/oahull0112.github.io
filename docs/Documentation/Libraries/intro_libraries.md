@@ -7,7 +7,7 @@ Scientific math libraries are a collection of highly optimized software tools th
 We support some of the most widely used scientific math libraries including:
 
 * MKL 
-* LibSci (Kestrel only) NOTE: I think the others are available across systems but not sure if we want to make any other notes about this. 
+* LibSci (Kestrel only) 
 * FFTW 
 * HDF5 
 
