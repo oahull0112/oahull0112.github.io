@@ -13,15 +13,15 @@ If you’re building a code that relies on one or more of these libraries, you c
 1. Download the source code of the package you’re trying to build. This will generally be found on the website of the package. 
 2. Consult the documentation of the package to find out what scientific libraries are needed, and if the package developers provide guidance on what toolchains/libraries are best 
 3. Determine the availability of the needed scientific libraries.  
-	a. Can a “library-of-libraries” like MKL or LibSci be used? 
-	b. Does NREL support the library as a module?  
-		i. If so, determine the toolchain it was built with (usually given in the name of the module).
+    1. Can a “library-of-libraries” like MKL or LibSci be used? 
+    2. Does NREL support the library as a module?  
+        1. If so, determine the toolchain it was built with (usually given in the name of the module).
 4. Prepare your environment 
-	a. `module load` the necessary modules to prepare your environment. (See [ENVIRONMENT PREPARATION] step of VASP example) 
+    1. `module load` the necessary modules to prepare your environment. (See [ENVIRONMENT PREPARATION] step of VASP example) 
 5. Prepare your makefile 
-	a. Make sure that the compilers and (optional) MPI used in the makefile match what is used to build your scientific libraries as best as possible 
-	b. Make sure that the paths to the scientific libraries in the makefile match the path given by the `module show` command 
-	c. Make sure the proper “little L” libraries are referenced in the makefile 
+    1. Make sure that the compilers and (optional) MPI used in the makefile match what is used to build your scientific libraries as best as possible 
+    2. Make sure that the paths to the scientific libraries in the makefile match the path given by the `module show` command 
+    3. Make sure the proper “little L” libraries are referenced in the makefile 
 6. Compile!
 
 ## Makefiles, autoconf, and cmake
