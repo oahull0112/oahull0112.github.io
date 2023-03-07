@@ -26,9 +26,9 @@ If you’re building a code that relies on one or more of these libraries, you c
 
 ## Makefiles, autoconf, and cmake
 
-Build tools like make, autoconf, and cmake are convenient ways to automate the compilation of a code. If you’re building a package, you may need to modify/customize how the code compiles, e.g., so it finds and includes the libraries you want. This may involve directly modifying the makefile, modifying the make.include (or make.inc) file, or using tools like autoconf or CMake to configure the makefile. 
+Build tools like make, autoconf, and cmake are convenient ways to automate the compilation of a code. If you’re building a package, you may need to modify/customize how the code compiles, e.g., so it finds and includes the libraries you want. This may involve directly modifying the makefile, modifying the make.include (or make.inc, makefile.include, etc.) file, or using tools like autoconf or CMake to configure the makefile. 
 
-Modifying a makefile (or make.include, etc.) so it compiles using the scientific libraries you want can be a daunting process. We’ll go through a prototypical example and show how different libraries can be included in the build of a program. To do this, we’ll use a make.include file for the electronic structure program VASP. For more information on specific build tools, see [PAGE LINKS]. 
+Modifying a makefile (or make.include, etc.) so it compiles using the scientific libraries you want can be a daunting process. We’ll go through a prototypical example and show how different libraries can be included in the build of a program. To do this, we’ll use a makefile.include file for the electronic structure program VASP. For more information on specific build tools, see [PAGE LINKS]. 
 
 !!! note
 	 We provide a walkthrough of linking scientific libraries using the VASP code as an example. This walkthrough tries to demonstrate key features of the general process of including scientific libraries in a build. We note that the exact build and modification process will vary between codes. Consulting the documentation of the code you’re trying to build is always the best place to start. 
@@ -37,7 +37,7 @@ Modifying a makefile (or make.include, etc.) so it compiles using the scientific
 
 ### Overview
 
-We’ll use the VASP make.include file as our walkthrough example. We can find a number of VASP make.include files [here](https://www.vasp.at/wiki/index.php/Makefile.include). We’ll be looking specifically at [this](https://www.vasp.at/wiki/index.php/Makefile.include.intel_omp) file.
+We’ll use the VASP makefile.include file as our walkthrough example. We can find a number of VASP makefile.include files [here](https://www.vasp.at/wiki/index.php/Makefile.include). We’ll be looking specifically at [this](https://www.vasp.at/wiki/index.php/Makefile.include.intel_omp) file.
 
 We’ll take a look at building with Intel MKL and the HDF5 package. 
 
@@ -79,7 +79,7 @@ How do we know these are the ones we want? The first line loads the mkl module. 
 
 ### Modifying the Makefile for MKL
 
-Now that we have the toolchain loaded into our environment, let’s take a look at the actual make.include file (link to file [here](https://www.vasp.at/wiki/index.php/Makefile.include.intel_omp). There are two important sections for the purpose of getting the code to build. The first: 
+Now that we have the toolchain loaded into our environment, let’s take a look at the actual makefile.include file (link to file [here](https://www.vasp.at/wiki/index.php/Makefile.include.intel_omp). There are two important sections for the purpose of getting the code to build. The first: 
 
 ```
 CPP         = fpp -f_com=no -free -w0  $*$(FUFFIX) $*$(SUFFIX) $(CPP_OPTIONS) 
@@ -102,8 +102,9 @@ LLIBS      += -L$(MKLROOT)/lib/intel64 -lmkl_scalapack_lp64 -lmkl_blacs_intelmpi
 INCS        =-I$(MKLROOT)/include/fftw 
 ```
 
-This make.include file has been provided to us by VASP. Our job here is two-fold:
-1. To ensure that we tell make (via the make.include file) the correct place to find MKL, I.e., to ensure that MKLROOT in the make.include file is set correctly.
+This makefile.include file has been provided to us by VASP. Our job here is two-fold:
+
+1. To ensure that we tell make (via the makefile.include file) the correct place to find MKL, I.e., to ensure that MKLROOT in the makefile.include file is set correctly.
 2. To ensure that we tell make the correct libraries to reference within MKLROOT.
 
 To do step 1, first type:
@@ -123,7 +124,7 @@ If we type `echo $MKLROOT`, we can confirm that this environment variable is pro
 `MKLROOT    ?= /sfs/nopt/nrel/apps/libraries/01-23/spack/opt/spack/linux-rhel8-icelake/intel-2021.6.0/intel-oneapi-mkl-2023.0.0-gnkrgwyxskxitvptyoubqaxlhh2v2re2/mkl/2023.0.0` 
 
 !!! tip “Note” 
-	The name of the environment variable for mkl’s root directory set by its module (MKLROOT, set when we `module load intel-oneapi-mkl/2023.0.0-intel`) is not necessarily going to match the corresponding root directory variable in a given makefile. It did in this instance, but that’s not guaranteed. The VASP make.include could have just as easily used MKL_ROOT, instead of MKLROOT. This is one reason why it’s safer to use `module show` to find the path of the root directory, then copy this path into the makefile, rather than rely on environment variables.  
+	The name of the environment variable for mkl’s root directory set by its module (MKLROOT, set when we `module load intel-oneapi-mkl/2023.0.0-intel`) is not necessarily going to match the corresponding root directory variable in a given makefile. It did in this instance, but that’s not guaranteed. The VASP makefile.include could have just as easily used MKL_ROOT, instead of MKLROOT. This is one reason why it’s safer to use `module show` to find the path of the root directory, then copy this path into the makefile, rather than rely on environment variables.  
 
 To do step 2, we should first look at the contents of $MKLROOT. To show the contents of the mkl directory, type
 
@@ -158,7 +159,7 @@ Now that we have the correct `MKLROOT` set in the makefile.include, and we have 
 
 ### Modifying the Makefile for HDF5
 
-Because HDF5 is an optional library, we could compile the code now if we wanted to. However, for the sake of practice, let’s uncomment the block in the make.include file related to HDF5 and repeat the exercise of linking a library: 
+Because HDF5 is an optional library, we could compile the code now if we wanted to. However, for the sake of practice, let’s uncomment the block in the makefile.include file related to HDF5 and repeat the exercise of linking a library: 
 
 ``` 
 # HDF5-support (optional but strongly recommended) 
