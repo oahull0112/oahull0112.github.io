@@ -1,10 +1,7 @@
 # Fortran
-!!! tip "NOTE"
-	This page is a **prototype**. Verify that the information is accurate if you copy and paste sections (e.g. make sure the listed compilers/MPI are indeed available, etc.)
-
 
 ## Getting Started
-This section provides the minimum amount of information necessary to successfully compile a basic Fortran code, and then a basic Fortran MPI code. See [External Resources](https://nrel.gov) for general Fortran language tutorials and Fortran-MPI tutorials.
+This section provides the minimum amount of information necessary to successfully compile a basic Fortran code, and then a basic Fortran MPI code. See [External Resources](https://nrel.gov) for general Fortran language tutorials and Fortran-MPI tutorials. See [COMPILERS] for detailed compiler and programming environment information.
 
 ### Hello World
 
@@ -49,7 +46,7 @@ It should return the following output:
 
 Now that we have a working Hello World program, let's modify it to run on multiple MPI tasks.
 
-On Kestrel, there are multiple implementations of MPI available. We can choose between OpenMPI, Intel MPI, MPICH, Nvidia's nvhpc, and Cray MPICH. These MPI implementations are associated with an underlying Fortran compiler. For example, if we type:
+On Kestrel, there are multiple implementations of MPI available. We can choose between OpenMPI, Intel MPI, MPICH, and Cray MPICH. These MPI implementations are associated with an underlying Fortran compiler. For example, if we type:
 
 `module avail openmpi`
 
@@ -120,21 +117,17 @@ When the job is done, the file hello.out should contain the same output as you f
 
 ## Compilers
 
-Available Fortran compilers:
+### Standalone compilers:
 
-* Include versions, also? Or just say to `module avail compiler`?
-* Could make sense to have two subsections here, one for standalone compilers, and another for PrgEnv programming environments
-* Actualy, three sections: standalone fortran compilers, PrgEnv associated compilers, and Fortran-MPI (both standalone and prgenv sections?)
-* could have a table, something like:
+| Compiler        | Compiler Executable | Module Avail | Available Versions |
+|:---------------:|:-------------------:|:------------:|:------------------:|
+| GNU (gcc)       | gfortran            | gcc          | 12.1.0, 11.2.0, 10.3.0, 10.1.0|
+| Intel           | ifort               | intel-oneapi | 2023.0.0, 2022.1.0, 2021.8.0 |
+| Intel           | ifort               | intel-classic| 2022.1.0
+| Cray            | ftn                 | cce          | 14.0.4
+| Nvidia (nvhpc)  | nvfortran           | nvhpc        | 22.7
 
-| Creator | Compiler Executable | Module Avail | Available Versions |
-|:-------:|:-------------------:|:------------:|:------------------:|
-| GNU     | gfortran            | gcc          | 12.1.0, 11.2.0, 10.3.0, 10.1.0|
-| Intel   | ifort               | intel-oneapi | 2023.0.0, 2022.1.0, 2021.8.0 |
-| Intel   | ifort               | intel-classic| 2022.1.0
-| Cray    | ftn                 | cce          | 14.0.4
-| Nvidia  | nvfortran           | nvhpc        | 22.7
-
+### Programming Environments:
 Note that in addition to the standalone Fortran compilers listed above, the various available programming environments available on the HPC (use `module avail PrgEnv` to view available programming environments) contain an associated Fortran compiler. For example, `module load PrgEnv-gnu/8.3.3` will load gfortran/12.1.0 into your environment, which you can verify with the `gfortran --version` command. If using a PrgEnv from a given creator, the loaded fortran compiler executable will be given by the same name as listed in the above table.
 
 | Creator | Compiler Executable | Module Avail          | Fortran Compiler Version |
@@ -146,14 +139,16 @@ Note that in addition to the standalone Fortran compilers listed above, the vari
 | Nvidia  | nvfortran           | PrgEnv-nvhpc/8.3.3    | 22.7.0
 | Nvidia  | nvfortran           | PrgEnv-nvidia/8.3.3   | broken?
 
-Available Fortran-MPI compilers ('toolchains'?):
+### Fortran-MPI compilers
 
-* list
-
-| Creator | Compiler Executable | Module Avail          | MPI version |Fortran Compiler Version |
-|:-------:|:-------------------:|:---------------------:|:-----------:|:-----------------------:|
-|
-
+| Compiler       | MPI     | Compiler Executable | Module Avail                    |
+|:--------------:|:-------:|:-------------------:|:-------------------------------:|
+| GNU (gcc)      | openmpi | mpifort             | openmpi/4.1.4-gcc               | 
+| intel          | openmpi | mpifort             | openmpi/4.1.4-intel             |
+| intel          | intel   | mpiifort            | intel-oneapi-mpi/2021.8.0-intel |
+| gcc            | MPICH   | mpifort             | mpich/4.0.2-gcc                 |
+| intel          | MPICH   | mpifort             | mpich/4.0.2-intel               |
+| cray           | MPICH   | ftn                 | cray-mpich/8.1.20               | 
 
 ## Troubleshooting
 
