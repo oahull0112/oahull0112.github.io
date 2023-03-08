@@ -16,6 +16,12 @@ nav:
       - Libraries:
         - Libraries Overview: Documentation/Libraries/intro_libraries.md
         - Libraries Deepdive: Documentation/Libraries/deepdive.md
+        - MKL: Documentation/Libraries/mkl.md
+        - LibSci: Documentation/Libraries/libsci.md
+        - FFTW: Documentation/Libraries/fftw.md
+        - LAPACK: Documentation/Libraries/lapack.md
+      - Debugging:
+        - GDB: Documentation/Debugging/gdb.md
 
 theme:
   name: material
@@ -29,6 +35,8 @@ theme:
       example: material/arrow-top-left-bottom-right
 
 markdown_extensions:
+  - toc:
+      permalink: "#"
   - attr_list
   - meta
   - pymdownx.highlight
