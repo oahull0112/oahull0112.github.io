@@ -92,7 +92,7 @@ You should receive a similar output to the following (the rank ordering may diff
  Hello World from MPI task:            0 out of            4
 ```
 
-Generally, we don't want to run MPI programs on the login node! Let's submit this as a job to the scheduler. Create a file named `job.in` and modify the file to contain the following:
+Generally, we don't want to run MPI programs on the login node! Let's submit this code as a job. Create a file named `job.in` and modify the file to contain the following:
 
 ```
 #!/bin/bash
@@ -100,17 +100,16 @@ Generally, we don't want to run MPI programs on the login node! Let's submit thi
 #SBATCH --time=00:01:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
-#SBATCH --partition=standard
-#SBATCH --account=<your account here>
+#SBATCH --partition=debug
+#SBATCH --account=
 
 module load openmpi/4.1.4-gcc
 
 srun -n 4 ./hello_mpi &> hello.out
 
 ```
-Be sure to replace the `<your account here>` with your account name.
 
-Submit the job:
+Submit the job by typing:
 
 `sbatch job.in`
 
@@ -120,25 +119,43 @@ When the job is done, the file hello.out should contain the same output as you f
 
 ### Standalone compilers:
 
-| Compiler        | Compiler Executable | Module Avail | Systems available on |
-|:---------------:|:-------------------:|:------------:|:--------------------:|
-| GNU (gcc)       | gfortran            | gcc          | Kestrel(Eagle), Swift, Vermillion
-| Intel           | ifort               | intel-oneapi | Kestrel(Eagle), Swift, Vermillion
-| Intel           | ifort               | intel-classic| Kestrel
+| Compiler        | Compiler Executable | Module Avail | Available Versions |
+|:---------------:|:-------------------:|:------------:|:------------------:|
+| GNU (gcc)       | gfortran            | gcc          | 12.1.0, 11.2.0, 10.3.0, 10.1.0|
+| Intel           | ifort               | intel-oneapi | 2023.0.0, 2022.1.0, 2021.8.0 |
+| Intel           | ifort               | intel-classic| 2022.1.0
+| Cray            | ftn                 | cce          | 14.0.4
+| Nvidia (nvhpc)  | nvfortran           | nvhpc        | 22.7
+
+### Programming Environments:
+Note that in addition to the standalone Fortran compilers listed above, the various available programming environments available on the HPC (use `module avail PrgEnv` to view available programming environments) contain an associated Fortran compiler. For example, `module load PrgEnv-gnu/8.3.3` will load gfortran/12.1.0 into your environment, which you can verify with the `gfortran --version` command. If using a PrgEnv from a given creator, the loaded fortran compiler executable will be given by the same name as listed in the above table.
+
+| Creator | Compiler Executable | Module Avail          | Fortran Compiler Version |
+|:-------:|:-------------------:|:---------------------:|:------------------------:|
+| GNU     | gfortran            | PrgEnv-gnu/8.3.3      | 12.1.0
+| GNU     | gfortran            | PrgEnv-gnu-amd/8.3.3  | broken?
+| Intel   | ifort               | PrgEnv-intel/8.3.3    | 2021.6.0
+| Cray    | ftn                 | PrgEnv-Cray/8.3.3     | 14.0.4
+| Nvidia  | nvfortran           | PrgEnv-nvhpc/8.3.3    | 22.7.0
+| Nvidia  | nvfortran           | PrgEnv-nvidia/8.3.3   | broken?
 
 ### Fortran-MPI compilers
 
-| Compiler       | MPI     | Compiler Executable | Module Avail                    | Systems available on |
-|:--------------:|:-------:|:-------------------:|:-------------------------------:|:--------------------:|
-| GNU (gcc)      | openmpi | mpifort             | openmpi                         | Kestrel(Eagle), Swift, Vermillion
-| intel          | openmpi | mpifort             | openmpi/4.1.x-intel             | Kestrel(Eagle)
-| intel          | intel   | mpiifort            | intel-oneapi-mpi                | Kestrel, Swift, Vermillion
-| gcc            | MPICH   | mpifort             | mpich                           | Kestrel, Swift, Vermillion
-| intel          | MPICH   | mpifort             | mpich/4.0.2-intel               | Kestrel only
-| cray           | MPICH   | ftn                 | cray-mpich                      | Kestrel only
+| Compiler       | MPI     | Compiler Executable | Module Avail                    |
+|:--------------:|:-------:|:-------------------:|:-------------------------------:|
+| GNU (gcc)      | openmpi | mpifort             | openmpi/4.1.4-gcc               | 
+| intel          | openmpi | mpifort             | openmpi/4.1.4-intel             |
+| intel          | intel   | mpiifort            | intel-oneapi-mpi/2021.8.0-intel |
+| gcc            | MPICH   | mpifort             | mpich/4.0.2-gcc                 |
+| intel          | MPICH   | mpifort             | mpich/4.0.2-intel               |
+| cray           | MPICH   | ftn                 | cray-mpich/8.1.20               | 
+
+## Troubleshooting
+
+Include known problems and workarounds here, if applicable
 
 ## External Resources
 
 * [Basic Fortran Tutorial](https://pages.mtu.edu/~shene/COURSES/cs201/NOTES/fortran.html) 
-* [Detailed Fortran Tutorial](https://github.com/NREL/HPC/blob/gh-pages/docs/Documentation/languages/fortran/f90.md)
 * [Fortran/MPI on an HPC Tutorial](https://curc.readthedocs.io/en/latest/programming/MPI-Fortran.html)
+

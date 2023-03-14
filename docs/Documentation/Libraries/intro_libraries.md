@@ -2,18 +2,18 @@
 
 Scientific math libraries are a collection of highly optimized software tools that provide functions and algorithms for performing mathematical operations commonly used in scientific applications. They provide developers with a variety of tools for solving complex problems. These libraries are highly optimized for performance and generally designed to be portable across different platforms and operating systems. 
 
-  
-
 We support some of the most widely used scientific math libraries including:
 
 * MKL 
-* LibSci (Kestrel only) 
+* LibSci (Kestrel only)
 * FFTW 
+* LAPACK
+* scaLAPACK
 * HDF5 
 
 Click the dropdown menus for more information on each:
 
-??? example "MKL (Math Kernel Library)"
+??? example "MKL"
 	
 	**Documentation:** [MKL](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-documentation.html)
 
@@ -26,7 +26,7 @@ Click the dropdown menus for more information on each:
 	* Fast Fourier Transforms 
 	* Vector Math 
 
-??? example "LibSci (Library for Scientific Computing)"
+??? example "LibSci"
 
 	**Documentation:** [LibSci](https://support.hpe.com/hpesc/public/docDisplay?docId=a00115110en_us&docLocale=en_US&page=Cray_Scientific_and_Math_Libraries_CSML_.html)
 
@@ -42,13 +42,26 @@ Click the dropdown menus for more information on each:
 	* IRT (Iterative Refinement Toolkit) - a library of solvers and tools that provides solutions to linear systems using single-precision factorizations while preserving accuracy through mixed-precision iterative refinement. 
 	* CrayBLAS - a library of BLAS routines autotuned for Cray XC series systems through extensive optimization and runtime adaptation.  
 
-??? example "FFTW (Fastest Fourier Transform in the West)"
+??? example "FFTW"
 
 	**Documentation:** [FFTW](https://www.fftw.org/)
 
 	FFTW is a C library for computing discrete Fourier transforms of arbitrary input sizes and dimensions. It is optimized for speed and can perform discrete Fourier transforms up to several orders of magnitude faster than other commonly available Fourier transform libraries. FFTW supports both single-precision and double-precision transforms, as well as multithreading for parallel execution on shared-memory systems.
 
-??? example "HDF5 (Hierarchical Data Format)"
+
+??? example "LAPACK and scaLAPACK"
+
+	**Documentation:** [LAPACK](https://netlib.org/lapack/), [scaLAPACK](https://netlib.org/scalapack/)
+	
+	LAPACK is a highly optimized library of linear algebra routines written in Fortran 90. These routines include matrix multiplication, factorization (LU, Cholesky, QR, etc.) least squares solutions of linear systems, eigenvalue problems, and many others. LAPACK routines are available in both single and double precision, and for complex and real numbers.
+	
+	LAPACK depends on [BLAS](https://netlib.org/lapack/faq.html#_blas) (Basic Linear Algebra Subprograms).
+	
+	[ScaLAPACK](https://netlib.org/scalapack/) is a parallel-distributed version of LAPACK (i.e., scalaPACK is MPI-parallel)
+	
+	Both LAPACK and ScaLAPACK are available as either standalone libraries (`netlib-lapack`), or as part of the "package-of-packages" libraries [MKL](mkl.md) and [LibSci](libsci.md).
+
+??? example "HDF5"
 
 	**Documentation** [HDF5](https://portal.hdfgroup.org/display/HDF5/HDF5)
 
@@ -56,4 +69,4 @@ Click the dropdown menus for more information on each:
 
 # Additional Resources
 
-NERSC provides an excellent overview of each of these scientific libraries [here](https://docs.nersc.gov/development/libraries/)
+For a detailed guide on how to include scientific libraries when compiling programs, see [our guide](deepdive.md).

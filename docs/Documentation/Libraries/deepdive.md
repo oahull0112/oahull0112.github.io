@@ -15,9 +15,9 @@ If you’re building a code that relies on one or more of these libraries, you c
 3. Determine the availability of the needed scientific libraries.  
     1. Can a “library-of-libraries” like MKL or LibSci be used? 
     2. Does NREL support the library as a module?  
-        1. If so, determine the toolchain it was built with (usually given in the name of the module).
+        1. If so, determine the toolchain it was built with (usually given in the name of the module). If the toolchain is not clear from the name of the module, try the `ldd` command (e.g., `ldd path/to/executable/executable`), which will show you the dynamically linked libraries of the executable.
 4. Prepare your environment 
-    1. `module load` the necessary modules to prepare your environment. (See [ENVIRONMENT PREPARATION] step of VASP example) 
+    1. `module load` the necessary modules to prepare your environment. (See  [environment preparation](#environment-preparation) step of VASP example) 
 5. Prepare your makefile 
     1. Make sure that the compilers and (optional) MPI used in the makefile match what is used to build your scientific libraries as best as possible 
     2. Make sure that the paths to the scientific libraries in the makefile match the path given by the `module show` command 
@@ -28,7 +28,7 @@ If you’re building a code that relies on one or more of these libraries, you c
 
 Build tools like make, autoconf, and cmake are convenient ways to automate the compilation of a code. If you’re building a package, you may need to modify/customize how the code compiles, e.g., so it finds and includes the libraries you want. This may involve directly modifying the makefile, modifying the make.include (or make.inc, makefile.include, etc.) file, or using tools like autoconf or CMake to configure the makefile. 
 
-Modifying a makefile (or make.include, etc.) so it compiles using the scientific libraries you want can be a daunting process. We’ll go through a prototypical example and show how different libraries can be included in the build of a program. To do this, we’ll use a makefile.include file for the electronic structure program VASP. For more information on specific build tools, see [PAGE LINKS]. 
+Modifying a makefile (or make.include, etc.) so it compiles using the scientific libraries you want can be a daunting process. We’ll go through a prototypical example and show how different libraries can be included in the build of a program. To do this, we’ll use a makefile.include file for the electronic structure program VASP.
 
 !!! note
 	 We provide a walkthrough of linking scientific libraries using the VASP code as an example. This walkthrough tries to demonstrate key features of the general process of including scientific libraries in a build. We note that the exact build and modification process will vary between codes. Consulting the documentation of the code you’re trying to build is always the best place to start. 
@@ -55,15 +55,15 @@ Yields the output:
 
 `intel-oneapi-mkl/2023.0.0-intel      ucx/1.13.0` 
 
-Thus, if we want to use the toolchains managed by NREL, we must use the intel oneapi toolchain in our VASP build, since `intel-oneapi-mkl/2023.0.0-intel` is the only available mkl module. If you want to use a different toolchain, you could build MKL yourself, but that’s outside the scope of this article. 
+Thus, if we want to use the toolchains managed by NREL, we must use the Intel oneapi toolchain in our VASP build, since `intel-oneapi-mkl/2023.0.0-intel` is the only available mkl module. If you want to use a different toolchain, you could build MKL yourself, but that’s outside the scope of this article. 
 
-To “use the intel oneapi toolchain” means to use intel compilers and Intel’s implementation of MPI to compile VASP. We’re doing this because mkl was built with this toolchain, and we want our toolchains to match as best as possible to minimize build errors and bugs. 
+To “use the Intel oneapi toolchain” means to use Intel compilers and Intel’s implementation of MPI to compile VASP. We’re doing this because mkl was built with this toolchain, and we want our toolchains to match as best as possible to minimize build errors and bugs. 
 
 Let’s prepare our environment to use this toolchain. First, 
 
 `module purge` 
 
-To clear your environment. Now, we want the intel oneapi mkl module, the intel fortran compiler (ifort), and the intel MPI fortran compiler (mpiifort). Type: 
+To clear your environment. Now, we want the Intel oneapi mkl module, the Intel fortran compiler (ifort), and the Intel MPI fortran compiler (mpiifort). Type: 
 
 `module avail 2>&1 | grep oneapi` 
 
@@ -75,11 +75,11 @@ module load intel-oneapi-mpi/2021.8.0-intel
 module load intel-oneapi/2022.1.0 
 ``` 
 
-How do we know these are the ones we want? The first line loads the mkl module. The second line gives us mpiifort, the intel MPI fortran compiler, and the third line gives us ifort, the intel Fortran compiler. (test the latter two with `which mpiifort` and `which ifort` -- you’ll see that they’re now in your path. If you `module purge` and try `which mpiifort` again, you’ll see you’re not able to find mpiifort anymore.) 
+How do we know these are the ones we want? The first line loads the mkl module. The second line gives us mpiifort, the Intel MPI fortran compiler, and the third line gives us ifort, the Intel Fortran compiler. (test the latter two with `which mpiifort` and `which ifort` -- you’ll see that they’re now in your path. If you `module purge` and try `which mpiifort` again, you’ll see you’re not able to find mpiifort anymore.) 
 
 ### Modifying the Makefile for MKL
 
-Now that we have the toolchain loaded into our environment, let’s take a look at the actual makefile.include file (link to file [here](https://www.vasp.at/wiki/index.php/Makefile.include.intel_omp). There are two important sections for the purpose of getting the code to build. The first: 
+Now that we have the toolchain loaded into our environment, let’s take a look at the actual makefile.include file (link to file [here](https://www.vasp.at/wiki/index.php/Makefile.include.intel_omp)). There are two important sections for the purpose of getting the code to build. The first: 
 
 ```
 CPP         = fpp -f_com=no -free -w0  $*$(FUFFIX) $*$(SUFFIX) $(CPP_OPTIONS) 
@@ -89,7 +89,7 @@ FCL         = mpiifort
 
 The first line says that the compiler pre-processor will be fpp (try `which fpp` and you should get an output `/sfs/nopt/nrel/apps/compilers/01-23/spack/opt/spack/linux-rhel8-icelake/gcc-8.4.0/intel-oneapi-compilers-2022.1.0-wosfexnwo5ag3gyfoco2w6upcew5yj6f/compiler/2022.1.0/linux/bin/intel64/fpp`, confirming that we’re pulling fpp from intel-oneapi).  
 
-The second and third lines say that we’ll be using intel’s MPI (Try `which mpiifort` to confirm that it is in your path). FC is the “Fortran Compiler” and FCL is the corresponding linker. Line 14 additionally says we’ll be compiling with openmp (see [SECTION] on compilers). Different compilers have different executable names (e.g. mpiifort for intel MPI fortran compiler, mpifort for GNU). See [COMPILERS PAGE] for a complete list. 
+The second and third lines say that we’ll be using Intel’s MPI (Try `which mpiifort` to confirm that it is in your path). FC is the “Fortran Compiler” and FCL is the corresponding linker. Line 14 additionally says we’ll be compiling with openmp. Different compilers have different executable names (e.g. mpiifort for Intel MPI fortran compiler, mpifort for GNU). See the [Fortran documentation page](../../Languages/fortran.md) for a complete list. 
 
 The next important section is given below: 
 
@@ -104,14 +104,14 @@ INCS        =-I$(MKLROOT)/include/fftw
 
 This makefile.include file has been provided to us by VASP. Our job here is two-fold:
 
-1. To ensure that we tell make (via the makefile.include file) the correct place to find MKL, I.e., to ensure that MKLROOT in the makefile.include file is set correctly.
-2. To ensure that we tell make the correct libraries to reference within MKLROOT.
+1. To ensure that we tell make (via the makefile.include file) the correct place to find MKL, I.e., to ensure that `MKLROOT` in the makefile.include file is set correctly.
+2. To ensure that we tell make the correct libraries to reference within `MKLROOT`.
 
 To do step 1, first type:
 
 `module list` 
 
-To see the modules you’ve loaded into your environment. You should have `intel-oneapi-mkl/2023.0.0-intel` in the list.  If not, review section [ENVIRONMENT PREPARATION]. Now, we use the `module show` command to find the root directory of mkl: 
+To see the modules you’ve loaded into your environment. You should have `intel-oneapi-mkl/2023.0.0-intel` in the list.  If not, review the [environment preparation](#environment-preparation) section. Now, we use the `module show` command to find the root directory of mkl: 
 
 `module show intel-oneapi-mkl/2023.0.0-intel` 
 
@@ -119,14 +119,14 @@ We see in the output of this command the following line:
 
 `setenv		 MKLROOT /sfs/nopt/nrel/apps/libraries/01-23/spack/opt/spack/linux-rhel8-icelake/intel-2021.6.0/intel-oneapi-mkl-2023.0.0-gnkrgwyxskxitvptyoubqaxlhh2v2re2/mkl/2023.0.0` 
 
-If we type `echo $MKLROOT`, we can confirm that this environment variable is properly set from when we ran the command `module load intel-oneapi-mkl/2023.0.0-intel`. In the VASP makefile, we have `MKLROOT    ?= /path/to/your/mkl/installation`. The ?= means that this variable will not be set if MKLROOT has already been set. So, we can ignore this line if we’d like. However, to be safe, we should simply copy the path of the mkl root directory to this line in makefile.include, so that this line now reads: 
+If we type `echo $MKLROOT`, we can confirm that this environment variable is properly set from when we ran the command `module load intel-oneapi-mkl/2023.0.0-intel`. In the VASP makefile, we have `MKLROOT    ?= /path/to/your/mkl/installation`. The ?= means that this variable will not be set if `MKLROOT` has already been set. So, we can ignore this line if we’d like. However, to be safe, we should simply copy the path of the MKL root directory to this line in makefile.include, so that this line now reads: 
 
 `MKLROOT    ?= /sfs/nopt/nrel/apps/libraries/01-23/spack/opt/spack/linux-rhel8-icelake/intel-2021.6.0/intel-oneapi-mkl-2023.0.0-gnkrgwyxskxitvptyoubqaxlhh2v2re2/mkl/2023.0.0` 
 
 !!! tip  
-	The name of the environment variable for mkl’s root directory set by its module (MKLROOT, set when we `module load intel-oneapi-mkl/2023.0.0-intel`) is not necessarily going to match the corresponding root directory variable in a given makefile. It did in this instance, but that’s not guaranteed. The VASP makefile.include could have just as easily used MKL_ROOT, instead of MKLROOT. This is one reason why it’s safer to use `module show` to find the path of the root directory, then copy this path into the makefile, rather than rely on environment variables.  
+	The name of the environment variable for mkl’s root directory set by its module (`MKLROOT`, set when we `module load intel-oneapi-mkl/2023.0.0-intel`) is not necessarily going to match the corresponding root directory variable in a given makefile. It did in this instance, but that’s not guaranteed. The VASP makefile.include could have just as easily used `MKL_ROOT`, instead of `MKLROOT`. This is one reason why it’s safer to use `module show` to find the path of the root directory, then copy this path into the makefile, rather than rely on environment variables.  
 
-To do step 2, we should first look at the contents of $MKLROOT. To show the contents of the mkl directory, type
+To do step 2, we should first look at the contents of `$MKLROOT`. To show the contents of the MKL directory, type
 
 `ls /sfs/nopt/nrel/apps/libraries/01-23/spack/opt/spack/linux-rhel8-icelake/intel-2021.6.0/intel-oneapi-mkl-2023.0.0-gnkrgwyxskxitvptyoubqaxlhh2v2re2/mkl/2023.0.0`
 
@@ -134,7 +134,7 @@ We should obtain the following output:
 
 `benchmarks  bin  env  examples  include  interfaces  lib  licensing  modulefiles  tools`
 
-If we look closely at the makefile, we see beneath the MKLROOT line the following:
+If we look closely at the makefile, we see beneath the `MKLROOT` line the following:
 ```
 MKLROOT    ?= /sfs/nopt/nrel/apps/libraries/01-23/spack/opt/spack/linux-rhel8-icelake/intel-2021.6.0/intel-oneapi-mkl-2023.0.0-gnkrgwyxskxitvptyoubqaxlhh2v2re2/mkl/2023.0.0
 LLIBS      += -L$(MKLROOT)/lib/intel64 -lmkl_scalapack_lp64 -lmkl_blacs_intelmpi_lp64
@@ -142,7 +142,7 @@ LLIBS      += -L$(MKLROOT)/lib/intel64 -lmkl_scalapack_lp64 -lmkl_blacs_intelmpi
 
 the `LLIBS` line is telling make which libraries in particular to pick out. 
 
-So, we want to go into the lib directory, and then the intel64 directory (since LLIBS is pointing to $MKLROOT/lib/intel64):
+So, we want to go into the lib directory, and then the intel64 directory (since LLIBS is pointing to `$MKLROOT/lib/intel64`). Let's see what's inside with the `ls` command:
 
 `ls  /sfs/nopt/nrel/apps/libraries/01-23/spack/opt/spack/linux-rhel8-icelake/intel-2021.6.0/intel-oneapi-mkl-2023.0.0-gnkrgwyxskxitvptyoubqaxlhh2v2re2/mkl/2023.0.0/lib/intel64`
 
@@ -151,9 +151,9 @@ There's a lot of stuff in this directory! VASP helps us by telling us we need th
 In general, the `.a` extension is for static linking, and the `.so` extension is for dynamic linking. For MKL in particular, the part `ilp64` vs `lp64` refer to two different interfaces to the MKL library. 
 
 !!! tip
-	Notice that, inside `$MKLROOT/lib/intel64`, the  filenames all start with `libmkl`, but in our makefile, we reference `lmkl_scalapack_lp64`. That's not a file in $MKLROOT/lib/intel64, but `libmkl_scalapack_lp64.so` is. The notation is that "big L" references the directories that the libraries are in, and the "little l" references the particular libraries. For example:
+	Notice that, inside `$MKLROOT/lib/intel64`, the  filenames all start with `libmkl`, but in our makefile, we reference `lmkl_scalapack_lp64`. That's not a file in `$MKLROOT/lib/intel64`, but `libmkl_scalapack_lp64.so` is. The notation is that "big L" references the directories that the libraries are in, and the "little l" references the particular libraries. For example:
 	<pre> LLIBS += <b>-L</b>$(MKLROOT)/lib/intel64 </pre>
-	<pre> <b>-l</b>mkl_scalapack_lp64</pre> . This is just a convention, but is important to get right because your compile will fail otherwise.
+	<pre> <b>-l</b>mkl_scalapack_lp64</pre> This is just a convention, but is important to get right because your compile will fail otherwise.
 
 Now that we have the correct `MKLROOT` set in the makefile.include, and we have an idea about how it's referencing the libraries within, we can move on to linking the HDF5 library.
 
