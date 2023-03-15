@@ -206,4 +206,4 @@ If you’re working with a code that has a testsuite, now is a good time to run 
 
 ## Questions?
 
-If you’re still stuck and unable to successfully link the scientific libraries you need, get in contact with [HPC Apps].
+If you’re still stuck and unable to successfully link the scientific libraries you need, get in contact with [HPC help](mailto:hpc-help@nrel.gov).
