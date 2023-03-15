@@ -8,22 +8,6 @@ Scientific libraries can be packaged together, like in the Intel Math Kernel Lib
 
 If you’re building a code that relies on one or more of these libraries, you can choose how to include these libraries. By the end of this tutorial, how to include these libraries should be clearer. If you need help building a particular package on an NREL machine, please contact the HPC apps team. 
 
-##Summary of Steps
-
-1. Download the source code of the package you’re trying to build. This will generally be found on the website of the package. 
-2. Consult the documentation of the package to find out what scientific libraries are needed, and if the package developers provide guidance on what toolchains/libraries are best 
-3. Determine the availability of the needed scientific libraries.  
-    1. Can a “library-of-libraries” like MKL or LibSci be used? 
-    2. Does NREL support the library as a module?  
-        1. If so, determine the toolchain it was built with (usually given in the name of the module). If the toolchain is not clear from the name of the module, try the `ldd` command (e.g., `ldd path/to/executable/executable`), which will show you the dynamically linked libraries of the executable.
-4. Prepare your environment 
-    1. `module load` the necessary modules to prepare your environment. (See  [environment preparation](#environment-preparation) step of VASP example) 
-5. Prepare your makefile 
-    1. Make sure that the compilers and (optional) MPI used in the makefile match what is used to build your scientific libraries as best as possible 
-    2. Make sure that the paths to the scientific libraries in the makefile match the path given by the `module show` command 
-    3. Make sure the proper “little L” libraries are referenced in the makefile 
-6. Compile!
-
 ## Makefiles, autoconf, and cmake
 
 Build tools like make, autoconf, and cmake are convenient ways to automate the compilation of a code. If you’re building a package, you may need to modify/customize how the code compiles, e.g., so it finds and includes the libraries you want. This may involve directly modifying the makefile, modifying the make.include (or make.inc, makefile.include, etc.) file, or using tools like autoconf or CMake to configure the makefile. 
@@ -202,6 +186,23 @@ INCS       += -I$(HDF5_ROOT)/include
 We’re ready to compile! In the case of VASP, the compile command is `make DEPS=1 std` but in general, the command may be `make all` or similar (consult the documentation of the code you’re trying to build). 
 
 If you’re working with a code that has a testsuite, now is a good time to run the testsuite to make sure that your compile was successful. 
+
+##Summary of Steps
+
+1. Download the source code of the package you’re trying to build. This will generally be found on the website of the package. 
+2. Consult the documentation of the package to find out what scientific libraries are needed, and if the package developers provide guidance on what toolchains/libraries are best 
+3. Determine the availability of the needed scientific libraries.  
+    1. Can a “library-of-libraries” like MKL or LibSci be used? 
+    2. Does NREL support the library as a module?  
+        1. If so, determine the toolchain it was built with (usually given in the name of the module). If the toolchain is not clear from the name of the module, try the `ldd` command (e.g., `ldd path/to/executable/executable`), which will show you the dynamically linked libraries of the executable.
+4. Prepare your environment 
+    1. `module load` the necessary modules to prepare your environment. (See  [environment preparation](#environment-preparation) step of VASP example) 
+5. Prepare your makefile 
+    1. Make sure that the compilers and (optional) MPI used in the makefile match what is used to build your scientific libraries as best as possible 
+    2. Make sure that the paths to the scientific libraries in the makefile match the path given by the `module show` command 
+    3. Make sure the proper “little L” libraries are referenced in the makefile 
+6. Compile!
+
 
 ## Questions?
 
