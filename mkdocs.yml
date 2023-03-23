@@ -16,11 +16,10 @@ nav:
       - Libraries:
         - Libraries Overview: Documentation/Libraries/intro_libraries.md
         - Libraries Deepdive: Documentation/Libraries/deepdive.md
-        - MKL: Documentation/Libraries/mkl.md
-        - LibSci: Documentation/Libraries/libsci.md
-        - FFTW: Documentation/Libraries/fftw.md
-        - LAPACK: Documentation/Libraries/lapack.md
-      - Debugging:
+        - MKL: Documentation/Libraries/intro_libraries#mkl
+        - LibSci: Documentation/Libraries/intro_libraries#libsci
+        - FFTW: Documentation/Libraries/intro_libraries#fftw
+        - LAPACK: Documentation/Libraries/intro_libraries#lapack-and-scalapack
         - GDB: Documentation/Debugging/gdb.md
 
 theme:
