@@ -1,4 +1,4 @@
-#Libraries Deepdive: Linking Scientific Libraries
+#Libraries How-To: Linking Scientific Libraries
 
 This page is a tutorial explaining how to include scientific libraries when compiling software. 
 

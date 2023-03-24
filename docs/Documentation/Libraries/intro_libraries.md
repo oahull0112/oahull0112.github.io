@@ -11,8 +11,6 @@ We support some of the most widely used scientific math libraries including:
 * scaLAPACK
 * HDF5 
 
-Click the dropdown menus for more information on each:
-
 ## MKL
 **Documentation:** [MKL](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-documentation.html)
 
@@ -56,16 +54,16 @@ LAPACK is a highly optimized library of linear algebra routines written in Fortr
 
 LAPACK depends on [BLAS](https://netlib.org/lapack/faq.html#_blas) (Basic Linear Algebra Subprograms).
 
-[ScaLAPACK](https://netlib.org/scalapack/) is a parallel-distributed version of LAPACK (i.e., scalaPACK is MPI-parallel)
+ScaLAPACK is a parallel-distributed version of LAPACK (i.e., scalaPACK is MPI-parallel)
 
-Both LAPACK and ScaLAPACK are available as either standalone libraries (`netlib-lapack`), or as part of the "package-of-packages" libraries [MKL](mkl.md) and [LibSci](libsci.md).
+Both LAPACK and ScaLAPACK are available as either standalone libraries (`netlib-lapack`), or as part of the "package-of-packages" libraries [MKL](#mkl) and [LibSci](#libsci).
 
 ## HDF5
 
-**Documentation** [HDF5](https://portal.hdfgroup.org/display/HDF5/HDF5)
+**Documentation:** [HDF5](https://portal.hdfgroup.org/display/HDF5/HDF5)
 
 HDF5 is a versatile data storage and management library designed for storing and exchanging large and complex data collections. It provides a powerful and flexible data model for representing and organizing data, as well as a variety of high-level programming interfaces for accessing and manipulating data. HDF5 supports a wide range of data types and can handle data sets of virtually unlimited size.
 
-# Additional Resources
+## Additional Resources
 
-For a detailed guide on how to include scientific libraries when compiling programs, see [our guide](deepdive.md).
+For a detailed guide on how to include scientific libraries when compiling programs, see [our guide](howto.md).
