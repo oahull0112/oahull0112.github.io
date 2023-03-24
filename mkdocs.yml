@@ -15,7 +15,7 @@ nav:
         - Fortran Example: Documentation/ProgrammingLanguages/fortran.md
       - Libraries:
         - Overview: Documentation/Libraries/intro_libraries.md
-        - Libraries How-To: Documentation/Libraries/howto.md
+        - Libraries How-to: Documentation/Libraries/howto.md
         - MKL: Documentation/Libraries/intro_libraries#mkl
         - LibSci: Documentation/Libraries/intro_libraries#libsci
         - FFTW: Documentation/Libraries/intro_libraries#fftw

@@ -11,6 +11,8 @@ We support some of the most widely used scientific math libraries including:
 * scaLAPACK
 * HDF5 
 
+For details on how to build an application with scientific libraries, see our [how-to guide](howto.md)
+
 ## MKL
 **Documentation:** [MKL](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-documentation.html)
 
