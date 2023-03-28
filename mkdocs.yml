@@ -21,6 +21,10 @@ nav:
         - FFTW: Documentation/Libraries/intro_libraries#fftw
         - LAPACK: Documentation/Libraries/intro_libraries#lapack-and-scalapack
         - HDF5: Documentation/Libraries/intro_libraries#hdf5
+      - Debugging:
+        - Documentation/Debugging/index.md
+        - DDT: Documentation/Debugging/ddt.md
+        - GDB: Documentation/Debugging/gdb.md
 
 theme:
   name: material
