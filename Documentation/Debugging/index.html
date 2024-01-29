@@ -1,0 +1,1176 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Libraries/howto/">
+      
+      
+        <link rel="next" href="ddt/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+    
+    
+      
+        <title>Debugging Overview - OAH</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+      
+  
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 21h8v-8h-2v4.59L6.41 5H11V3H3v8h2V6.41L17.59 19H13v2Z"/></svg>');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#debugging-overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="OAH" class="md-header__button md-logo" aria-label="OAH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OAH
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Debugging Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../howto/" class="md-tabs__link">
+        
+  
+    
+  
+  How-To
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Applications/vasp/" class="md-tabs__link">
+          
+  
+    
+  
+  Documentation
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="OAH" class="md-nav__button md-logo" aria-label="OAH" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    OAH
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../howto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-To
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Documentation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Applications
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Applications
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Applications/vasp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VASP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Applications/applications_template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Combined Module/Build Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Applications/berkeleygw_example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BerkeleyGW Combined Module/Build Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Applications/berkeleygw_module/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BerkeleyGW Module Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Applications/berkeleygw_build/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BerkeleyGW Build Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Applications/applications_template_module/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Application Module Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Applications/applications_template_build/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Application Build Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programming Languages
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Programming Languages
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ProgrammingLanguages/fortran/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fortran Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Libraries
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Libraries
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Libraries/intro_libraries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Libraries/howto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Libraries How-to
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Libraries/intro_libraries#mkl" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MKL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Libraries/intro_libraries#libsci" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LibSci
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Libraries/intro_libraries#fftw" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFTW
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Libraries/intro_libraries#lapack-and-scalapack" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LAPACK
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Libraries/intro_libraries#hdf5" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HDF5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  <span class="md-ellipsis">
+    Debugging
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Debugging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ddt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DDT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="gdb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GDB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-parallel-debugging-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Parallel Debugging Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Parallel Debugging Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fail-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fail points
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel-variable-inspection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parallel variable inspection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel-memory-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parallel memory debugging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#walk-through" class="md-nav__link">
+    <span class="md-ellipsis">
+      Walk-through
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="debugging-overview">Debugging Overview<a class="headerlink" href="#debugging-overview" title="Permanent link">#</a></h1>
+<p>Debugging code can be difficult on a good day, and parallel code introduces additional complications. Thankfully, we have a few tools available on NREL HPC machines to help us debug parallel programs. The intent of this guide is to serve as an overview of the types of information one can obtain with a parallel debugger on a supercomputer, and how this information can be used to solve problems in your code. Ultimately, the various parallel debugging and profiling tools tend to work similarly, providing information about individual task and thread performance, parallel memory usage and stack tracing, task-specific bottlenecks and fail points, and more.</p>
+<p>We offer several suites of parallel tools: </p>
+<ul>
+<li>the <a href="https://developer.arm.com/documentation/101136/latest/">ARM Forge suite</a> (DDT - debugger)</li>
+<li>the <a href="">Intel oneAPI HPC Toolkit</a> </li>
+<li>HPE’s tool suite (Kestrel-only):<ul>
+<li><a href="https://support.hpe.com/hpesc/public/docDisplay?docId=a00113947en_us&amp;page=Cray_Debugger_Support_Tools_CDST.html">Cray Debugger Support Tools (CDST)</a>, including <a href="https://support.hpe.com/hpesc/public/docDisplay?docLocale=en_US&amp;docId=a00115304en_us&amp;page=Debug_Crashed_Applications_With_gdb4hpc.html">gdb4hpc</a>, a command-line parallel debugger based on <a href="gdb/">GDB</a>.</li>
+<li><a href="https://support.hpe.com/hpesc/public/docDisplay?docId=a00113947en_us&amp;page=Cray_Performance_Measurement_and_Analysis_Tools_CPMAT.html">Cray Performance Measurement and Analysis Tools (CPMAT)</a></li>
+</ul>
+</li>
+</ul>
+<p>For a low-overhead serial debugger available on all NREL machines, see our <a href="gdb/">GDB documentation</a>.</p>
+<p>To skip to a walk-through example of parallel debugging, click <a href="#walk-through">here</a>.</p>
+<h2 id="key-parallel-debugging-features">Key Parallel Debugging Features<a class="headerlink" href="#key-parallel-debugging-features" title="Permanent link">#</a></h2>
+<p>Parallel debuggers typically come equipped with the same features available on serial debuggers (breakpoint setting, variable inspection, etc.). However, unlike serial debuggers, parallel debuggers provide valuable MPI task- and thread-specific information, too. We present some key parallel features here.</p>
+<p>Note that while we present features of ARM DDT below, we stress that the many parallel debugging tools function in similar ways and offer similar features.</p>
+<h3 id="fail-points">Fail points<a class="headerlink" href="#fail-points" title="Permanent link">#</a></h3>
+<p>Sometimes, some MPI tasks will fail at a particular point while others will not. This could be for a number of reasons (MPI task-defined variable goes out of bounds, etc.). Parallel debuggers can help us track down which tasks and/or threads are failing, and why. For example, in DDT, when the debugger detects that a task is failing, it prompts us to pause the program. On pausing, we can inspect which tasks are failing, and at which line in the code they are failing.</p>
+<h3 id="parallel-variable-inspection">Parallel variable inspection<a class="headerlink" href="#parallel-variable-inspection" title="Permanent link">#</a></h3>
+<p>Other times, your code may not fail, but will produce an obviously incorrect answer. Such a situation is even less desirable than your code failing outright, since tracking down the problem variables and problem tasks is often more difficult.</p>
+<p>In these situations, the parallel variable inspection capabilities of parallel debuggers are valuable. We can first check if our code runs as expected when we run in serial. If so, the fault doesn’t lie with the parallelism of your code, and you can proceed using serial debugging techniques. If the code succeeds in serial but yields incorrect results in parallel, then the code is likely afflicted with a parallel bug.</p>
+<p>Inspecting key parallel variables may help in identification of this bug. For example, we can inspect the variables that dictate how the parallel code is divided amongst MPI tasks. Is it as expected? Such a process will vary greatly on a code-by-code basis, but inspecting task-specific variables is a good place to start.</p>
+<p><img alt="doiownc" src="assets/images/debug_tools/DDT_BGW_doiownc.png" /></p>
+<p>The above images shows a comparison across 8 MPI tasks of the first entry of the “doiownc” variable of the BerkeleyGW code. In BerkeleyGW, this variable states whether or not the given MPI task “owns” a given piece of data. Here, we can see that Task 0 owns this piece of data, while tasks 1-7 do not.</p>
+<h3 id="parallel-memory-debugging">Parallel memory debugging<a class="headerlink" href="#parallel-memory-debugging" title="Permanent link">#</a></h3>
+<p>In addition to detecting seg faults and out-of-bounds errors as discussed in <a href="#fail-points">fail points</a>, parallel debuggers may offer more advanced memory debugging features. For example, DDT allows for advanced heap debugging. </p>
+<h3 id="walk-through">Walk-through<a class="headerlink" href="#walk-through" title="Permanent link">#</a></h3>
+<p>To highlight some of the above features, we've introduced an out-of-bounds error to the BerkeleyGW code. We’ve changed a writing of the <code>pol%gme</code> variable from:</p>
+<div class="highlight"><pre><span></span><code>do ic_loc = 1, peinf%ncownactual
+  do ig = 1, pol%nmtx
+    pol%gme(ig, ic_loc, iv_loc, ispin, irk, freq_idx) = ZERO
+  enddo
+enddo
+</code></pre></div>
+<p>To
+<div class="highlight"><pre><span></span><code>do ic_loc = 1, peinf%ncownactual
+  do ig = 1, pol%nmtx
+    pol%gme(ig, ic_loc, iv_loc, ispin, irk, freq_idx+1) = ZERO
+  enddo
+enddo
+</code></pre></div></p>
+<p>With this change, the sixth dimension of the array will go out of bounds. The details of the code aren’t important, just the fact that we know the code will fail!</p>
+<p>Now, when we run the code in DDT, we receive the following error:</p>
+<p>[FAILURE ERROR WINDOW IMAGE]</p>
+<p>When we click <code>pause</code>, we are immediately taken to the line that caused the failure:</p>
+<p>[IMAGE OF pol%gme HIGHLIGHTED]</p>
+<p>We can inspect the local variables in the righthand-side box.</p>
+<p>One particularly useful feature is the “current stack.” When we click this header, we are taken to a stack trace. When we click on each line in the stack trace, it takes us to the corresponding line in the corresponding source file, making stack tracing an error fast and simple. This is a common component of debuggers, even serial debuggers, but paired with our ability to choose which MPI task to focus on, this is a powerful feature! We get a task-specific view of the issue.</p>
+<p>Screenshot of GUI after pausing:</p>
+<ul>
+<li>Acknowledge that it will be more complicated in reality</li>
+<li>Main point is that it will point you to the exact line of code where it died, and also show you the whole stack trace/clickable</li>
+</ul>
+<h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">#</a></h2>
+<p>Parallel debugging tools are complex, and usage of these tools can sometimes end in attempts to “debug the debugger.” Contact <a href="mailto:hpc-help@nrel.gov">HPC Help</a> if you need assistance in getting started with a parallel debugger on an NREL system.</p>
+<p>Refer to specific debugger pages, like the <a href="Documentation/Development/Debug_Tools/ARM/ddt.md">DDT</a> page, on how to set-up and run the debugging program.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.path", "toc.follow"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      
+    
+  </body>
+</html>
