@@ -1,5 +1,9 @@
 #Libraries How-To: Linking Scientific Libraries
 
+debugging index test [here](/Documentation/Debugging/index)
+
+debugging index sublink test [here](/Documentation/Debugging/index/##key-parallel-debugging-features)
+
 fortran link test [here](/Documentation/ProgrammingLanguages/fortran)
 
 fortran sublink test [here](/Documentation/ProgrammingLanguages/fortran/#compilers)
