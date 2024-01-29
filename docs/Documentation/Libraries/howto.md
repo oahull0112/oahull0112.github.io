@@ -2,7 +2,7 @@
 
 debugging index test [here](/Documentation/Debugging/index)
 
-debugging index sublink test [here](/Documentation/Debugging/index/##key-parallel-debugging-features)
+debugging index sublink test [here](/Documentation/Debugging/index/#key-parallel-debugging-features)
 
 fortran link test [here](/Documentation/ProgrammingLanguages/fortran)
 
