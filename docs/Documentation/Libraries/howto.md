@@ -73,7 +73,7 @@ FCL         = mpiifort
 
 The first line says that the compiler pre-processor will be fpp (try `which fpp` and you should get an output `/sfs/nopt/nrel/apps/compilers/01-23/spack/opt/spack/linux-rhel8-icelake/gcc-8.4.0/intel-oneapi-compilers-2022.1.0-wosfexnwo5ag3gyfoco2w6upcew5yj6f/compiler/2022.1.0/linux/bin/intel64/fpp`, confirming that we’re pulling fpp from intel-oneapi).  
 
-The second and third lines say that we’ll be using Intel’s MPI (Try `which mpiifort` to confirm that it is in your path). FC is the “Fortran Compiler” and FCL is the corresponding linker. Line 14 additionally says we’ll be compiling with openmp. Different compilers have different executable names (e.g. mpiifort for Intel MPI fortran compiler, mpifort for GNU). See the [Fortran documentation page](/Documentation/ProgrammingLanguages/fortran.md) for a complete list. 
+The second and third lines say that we’ll be using Intel’s MPI (Try `which mpiifort` to confirm that it is in your path). FC is the “Fortran Compiler” and FCL is the corresponding linker. Line 14 additionally says we’ll be compiling with openmp. Different compilers have different executable names (e.g. mpiifort for Intel MPI fortran compiler, mpifort for GNU). See the [Fortran documentation page](/Documentation/ProgrammingLanguages/fortran) for a complete list. 
 
 The next important section is given below: 
 
